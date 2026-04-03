@@ -1,0 +1,45 @@
+﻿<Window x:Class="SalaryCalculator.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Title="Вычисление заработной платы" Height="450" Width="700">
+<Grid Margin="20">
+<!-- Комментарий: Основная сетка — левая колонка (ввод + результаты), правая (выбор должности) -->
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="350"/>
+<ColumnDefinition Width="*"/>
+</Grid.ColumnDefinitions>
+
+<!-- Левая колонка -->
+<StackPanel Grid.Column="0" Margin="0,0,20,0">
+<!-- Комментарий: Поле ввода количества часов по варианту №18 -->
+<StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+<Label Content="Количество часов:" VerticalAlignment="Center" Width="140"/>
+<TextBox x:Name="tbHours" Width="200" Height="30"/>
+</StackPanel>
+
+<!-- Комментарий: Переключатель «Подоходный налог (13%)» — налог вычисляется и отображается только при включённом состоянии -->
+<CheckBox x:Name="cbTax" Content="Подоходный налог (13%)" Margin="0,10,0,20"/>
+
+<!-- Комментарий: Поле «Начислено» (всегда показывается) -->
+<Label Content="Начислено" FontWeight="Bold" FontSize="14"/>
+<TextBlock x:Name="tbAccrued" Text="0.00 руб." FontSize="16" Margin="0,0,0,10"/>
+
+<!-- Комментарий: Поле «в том числе налог» — отображается в зависимости от состояния чекбокса (0.00 если выключен) -->
+<Label Content="в том числе налог" FontWeight="Bold" FontSize="14"/>
+<TextBlock x:Name="tbTax" Text="0.00 руб." FontSize="16"/>
+
+<!-- Комментарий: Кнопка «Вычислить» -->
+<Button x:Name="btnCalculate" Content="Вычислить" Height="40" Margin="0,30,0,0" Click="BtnCalculate_Click"/>
+</StackPanel>
+
+<!-- Правая колонка -->
+<GroupBox Grid.Column="1" Header="Преподаватель" Margin="0,10,0,0" Padding="10">
+<!-- Комментарий: Группа радиокнопок согласно варианту (ставки: 150/250/350 руб/час) -->
+<StackPanel>
+<RadioButton x:Name="rbAssistant" Content="ассистент" Margin="5" IsChecked="True"/>
+<RadioButton x:Name="rbDocent" Content="доцент" Margin="5"/>
+<RadioButton x:Name="rbProfessor" Content="профессор" Margin="5"/>
+</StackPanel>
+</GroupBox>
+</Grid>
+</Window>
